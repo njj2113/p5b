@@ -8,13 +8,15 @@ class Assignment {
     this.blue = blue;
   }
 
-  clicked(x, y) {
+  changeColor() {
+    this.red = random(0,255);
+    this.green = random(0,255);
+    this.blue = random(0,255);
+  }
+
+  contains(x, y) {
     let d = dist(x, y, this.x, this.y);
-    if (d < this.r) {
-      this.red = random(0,255);
-      this.green = random(0,255);
-      this.blue = random(0,255);
-    }
+    return (d < this.r);
   }
 
   show() {
