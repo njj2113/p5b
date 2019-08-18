@@ -1,11 +1,13 @@
 class Assignment {
-  constructor(x, y, r = 50, red = 100, green = 100, blue = 100) {
+  constructor(x, y, r = 50, red = 100, green = 100, blue = 100, vx = 3, vy = 3) {
     this.x = x;
     this.y = y;
     this.r = r;
     this.red = red;
     this.green = green;
     this.blue = blue;
+    this.vx = vx;
+    this.vy = vy;
   }
 
   intersects(other) {
@@ -32,7 +34,15 @@ class Assignment {
   }
 
   move() {
-    this.x += random(-5,5);
-    this.y += random(-5,5);
+    if (0 > this.x || this.x > width) {
+      this.vx *= -1;
+    }
+
+    if (0 > this.y || this.y > height) {
+      this.vy *= -1;
+    }
+
+    this.x += this.vx;
+    this.y += this.vy;
   }
 }

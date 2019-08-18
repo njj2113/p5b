@@ -14,12 +14,11 @@ function setup() {
     assignments[i] = new Assignment(x, y, r, 200, 200, 200);
   }
 
-  assignments[0] = new Assignment(200,200,200,0,0,0);
-  assignments[1] = new Assignment(200,200,200,255,255,255);
-  let r = random(10,50);
-  let a = new Assignment(mouseX,mouseY,r,0,0,0);
-  assignments.push(a);
-
+  //assignments[0] = new Assignment(200,200,200,0,0,0);
+  //assignments[1] = new Assignment(200,200,200,255,255,255);
+  //let r = random(10,50);
+  //let a = new Assignment(mouseX,mouseY,r,0,0,0);
+  //assignments.push(a);
 }
 
 //mouseDragged() alternative
@@ -42,13 +41,25 @@ function draw() {
     assignments[i].show();
   }
 
-  //if (a1.intersects(a2)) {
-  //  background(200,0,100);
+  //for (let i = 0; i < assignments.length; i++) {
+  //  assignments[i].show();
+  //  assignments[i].move();
   //}
 
-  for (let i = 0; i < assignments.length; i++) {
-    assignments[i].show();
-    assignments[i].move();
+  for (a of assignments) {
+    a.show();
+    a.move();
+
+    for (other of assignments) {
+      if (a != other && a.intersects(other)) {
+        a.vx *= -1;
+        a.vy *= -1;
+        other.vx *= -1;
+        other.vy *= -1;
+        //a.changeColor();
+        //other.changeColor();
+      }
+    }
   }
 
   //for (let assignment of assignments) {
