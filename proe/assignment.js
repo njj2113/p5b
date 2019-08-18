@@ -33,7 +33,16 @@ class Assignment {
     ellipse(this.x,this.y,this.r);
   }
 
-  move() {
+  naturalResetter() {
+    if (this.x < -100 || this.x > width + 100){
+      this.x = width/2;
+    }
+    if (this.y < -100 || this.y > height + 100){
+      this.y = height/2;
+    }
+  }
+
+  wall() {
     if (0 > this.x || this.x > width) {
       this.vx *= -1;
     }
@@ -41,15 +50,13 @@ class Assignment {
     if (0 > this.y || this.y > height) {
       this.vy *= -1;
     }
+  }
+
+  move() {
+    this.naturalResetter();
+    this.wall();
 
     this.x += this.vx;
     this.y += this.vy;
-
-    if (this.x < -100 || this.x > width + 100){
-      this.x = width/2;
-    }
-    if (this.y < -100 || this.y > height + 100){
-      this.y = height/2;
-    }
   }
 }

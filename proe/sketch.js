@@ -1,8 +1,4 @@
 let assignments = [];
-//let assignment;
-
-let a1;
-let a2;
 
 function setup() {
   createCanvas(800,600);
@@ -16,8 +12,7 @@ function setup() {
 
   //assignments[0] = new Assignment(200,200,200,0,0,0);
   //assignments[1] = new Assignment(200,200,200,255,255,255);
-  //let r = random(10,50);
-  //let a = new Assignment(mouseX,mouseY,r,0,0,0);
+  //let a = new Assignment(mouseX,mouseY,20,0,0,0);
   //assignments.push(a);
 }
 
@@ -41,11 +36,6 @@ function draw() {
     assignments[i].show();
   }
 
-  //for (let i = 0; i < assignments.length; i++) {
-  //  assignments[i].show();
-  //  assignments[i].move();
-  //}
-
   for (a of assignments) {
     a.show();
     a.move();
@@ -56,16 +46,9 @@ function draw() {
         a.vy *= -1;
         other.vx *= -1;
         other.vy *= -1;
-        //a.changeColor();
-        //other.changeColor();
       }
     }
   }
-
-  //for (let assignment of assignments) {
-  //  assignment.move();
-  //  assignment.show();
-  //}
 
   //if (assignments.length > 10) {
   //  assignments.splice(0,1);
