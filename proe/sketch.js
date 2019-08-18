@@ -3,12 +3,15 @@ let assignments = [];
 function setup() {
   createCanvas(800,600);
 
-  for (let i = 0; i < 10; i++) {
-    let x = random(width);
-    let y = random(height);
-    let r = random(10,50);
-    assignments[i] = new Assignment(x, y, r, 200, 200, 200);
-  }
+  //var assignmentsRef = firebase.firestore().collection('assignments');
+  //console.log(assignmentsRef.length);
+
+  //for (let i = 0; i < 10; i++) {
+  //  let x = random(width);
+  //  let y = random(height);
+  //  let r = random(10,50);
+  //  assignments[i] = new Assignment(x, y, r);
+  //}
 
   //assignments[0] = new Assignment(200,200,200,0,0,0);
   //assignments[1] = new Assignment(200,200,200,255,255,255);
@@ -27,6 +30,25 @@ function mouseClicked() {
 }
 
 function draw() {
+
+
+
+
+  
+  assignmentTags = selectAll('assignment');  //assignments elements are here!
+  assignments = [];
+  for (assignment of assignmentTags) {
+    assignments.push(assignment);
+  }
+  console.log(assignments);
+
+
+
+
+
+
+
+
   background(200,100,240);
   for (let i = 0; i < assignments.length; i++) {
     if (assignments[i].contains(mouseX, mouseY)) {
@@ -39,6 +61,7 @@ function draw() {
   for (a of assignments) {
     a.show();
     a.move();
+    a.reveal();
 
     for (other of assignments) {
       if (a != other && a.intersects(other)) {

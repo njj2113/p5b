@@ -1,5 +1,5 @@
 class Assignment {
-  constructor(x, y, r = 50, red = 100, green = 100, blue = 100, vx = 3, vy = 3) {
+  constructor(x = width/2, y = height/2, r = 50, red = 100, green = 100, blue = 100, vx = 1, vy = 1) {
     this.x = x;
     this.y = y;
     this.r = r;
@@ -58,5 +58,9 @@ class Assignment {
 
     this.x += this.vx;
     this.y += this.vy;
+  }
+
+  reveal() {
+    text("hi", this.x, this.y);
   }
 }
