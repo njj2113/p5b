@@ -1,6 +1,7 @@
 var circleY;
 var circleX = 50;
 var col = 0;
+let a = 5;
 
 function setup() {
   // put setup code here
