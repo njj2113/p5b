@@ -44,5 +44,12 @@ class Assignment {
 
     this.x += this.vx;
     this.y += this.vy;
+
+    if (this.x < -100 || this.x > width + 100){
+      this.x = width/2;
+    }
+    if (this.y < -100 || this.y > height + 100){
+      this.y = height/2;
+    }
   }
 }
