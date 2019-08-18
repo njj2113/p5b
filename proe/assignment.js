@@ -1,5 +1,5 @@
 class Assignment {
-  constructor(x, y, r, red, green, blue) {
+  constructor(x, y, r = 50, red = 100, green = 100, blue = 100) {
     this.x = x;
     this.y = y;
     this.r = r;
