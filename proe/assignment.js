@@ -1,5 +1,6 @@
 class Assignment {
-  constructor(x = width/2, y = height/2, r = 50, red = 100, green = 100, blue = 100, vx = 1, vy = 1) {
+  constructor(name, x = width/2, y = height/2, r = 50, red = 100, green = 100, blue = 100, vx = 1, vy = 1) {
+    this.name = name;
     this.x = x;
     this.y = y;
     this.r = r;
@@ -61,6 +62,6 @@ class Assignment {
   }
 
   reveal() {
-    text("hi", this.x, this.y);
+    text(this.name, this.x, this.y);
   }
 }
