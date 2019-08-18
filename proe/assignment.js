@@ -8,6 +8,11 @@ class Assignment {
     this.blue = blue;
   }
 
+  intersects(other) {
+    let d = dist(this.x, this.y, other.x, other.y);
+    return d < this.r + other.r;
+  }
+
   changeColor() {
     this.red = random(0,255);
     this.green = random(0,255);
