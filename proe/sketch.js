@@ -1,7 +1,5 @@
 let assignmentTags = [];
 let assignments = [];
-let run = false;
-
 
 //used color converter directly from: https://stackoverflow.com/questions/5623838/rgb-to-hex-and-hex-to-rgb
 function hexToRgb(hex) {
@@ -15,16 +13,6 @@ function hexToRgb(hex) {
 
 function setup() {
   createCanvas(800,600);
-
-  //var assignmentsRef = firebase.firestore().collection('assignments');
-  //console.log(assignmentsRef.length);
-
-  //for (let i = 0; i < 10; i++) {
-  //  let x = random(width);
-  //  let y = random(height);
-  //  let r = random(10,50);
-  //  assignments[i] = new Assignment(x, y, r);
-  //}
 
   //assignments[0] = new Assignment(200,200,200,0,0,0);
   //assignments[1] = new Assignment(200,200,200,255,255,255);
@@ -65,7 +53,6 @@ function mouseClicked() {
 
             if (tempName == doc.data().title) {
               exist = true;
-
             }
 
           });
@@ -80,32 +67,7 @@ function mouseClicked() {
 }
 
 function draw() {
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
   //assignmentTags = selectAll('assignment');  //assignments elements are here! but doesn't this reference riot not firebase?
-  //var assignmentTags = firebase.database().ref("assignment"); //no
 
   var db = firebase.firestore();
   //assignments = [];
@@ -139,106 +101,7 @@ function draw() {
     });
   });
 
-  //console.log(assignments);
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  //if (!run){
-  //  console.log(assignments);
-  //  run = true;
-  //}
-
-  //for (thing of assignments) {
-  //  console.log(thing);
-  //}
-
-
-
-  //var db = firebase.firestore();
-  //var assignmentsRef = db.collection('assignments');
-
-  //for (assignment of assignmentsRef) {
-  //  console.log(assignment);
-  //}
-
-
-
-
-  //var docRef = db.collection("assignments").doc("SF");
-
-  //docRef.get().then(function(doc) {
-  //  if (doc.exists) {
-  //      console.log("Document data:", doc.data());
-  //  } else {
-  //      // doc.data() will be undefined in this case
-  //      console.log("No such document!");
-  //  }
-  //}).catch(function(error) {
-  //  console.log("Error getting document:", error);
-  //});
-
-
-
-
-  //var assignmentTags = firebase.firestore().collection('assignments');
-  //console.log(assignmentTags.length);
-  //assignments = [];
-  //for (assignment of assignmentTags)
-  //{
-  //  let x = random(width);
-  //  assignment = new Assignment(assignment.title, x, 200, 200);
-  //  assignments.push(assignment);
-  //}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
   background(200,100,240);
-  //for (let i = 0; i < assignments.length; i++) {
-    //if (assignments[i].contains(mouseX, mouseY)) {
-    //  assignments[i].changeColor();
-    //}
-    //assignments[i].move();
-    //assignments[i].show();
-  //}
 
   for (a of assignments) {
     a.show();
@@ -254,8 +117,4 @@ function draw() {
       }
     }
   }
-
-  //if (assignments.length > 10) {
-  //  assignments.splice(0,1);
-  //}
 }
