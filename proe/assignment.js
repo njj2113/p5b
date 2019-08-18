@@ -64,4 +64,8 @@ class Assignment {
   reveal() {
     text(this.name, this.x, this.y);
   }
+
+  checker() {
+    
+  }
 }

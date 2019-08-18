@@ -83,7 +83,7 @@
         course: this.refs.courseSelect.value,
         title: this.refs.assignmentName.value,
         due: this.refs.assignmentDate.value,
-        color: undefined,
+        color: this.refs.courseColor.value,
         done: false,
         id: ""
       }

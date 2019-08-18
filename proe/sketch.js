@@ -2,6 +2,17 @@ let assignmentTags = [];
 let assignments = [];
 let run = false;
 
+
+//used color converter directly from: https://stackoverflow.com/questions/5623838/rgb-to-hex-and-hex-to-rgb
+function hexToRgb(hex) {
+  var result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
+  return result ? {
+    r: parseInt(result[1], 16),
+    g: parseInt(result[2], 16),
+    b: parseInt(result[3], 16)
+  } : null;
+}
+
 function setup() {
   createCanvas(800,600);
 
@@ -37,12 +48,33 @@ function mouseClicked() {
 
           if (tempName == doc.data().title) {
             db.collection("assignments").doc(doc.id).delete();
+            for (let j = 0; j < 999; j++) {
+              console.log(j);
+            }
           }
 
         });
       });
 
-      assignments.splice(i,1);
+
+      for (let i = assignments.length-1; i >= 0; i--) {
+        let exist = false;
+
+        db.collection("assignments").get().then(function(querySnapshot) {
+          querySnapshot.forEach(function(doc) {
+
+            if (tempName == doc.data().title) {
+              exist = true;
+
+            }
+
+          });
+        });
+
+        if (!exist) {
+          assignments.splice(i,1);
+        }
+      }
     }
   }
 }
@@ -75,7 +107,6 @@ function draw() {
   //assignmentTags = selectAll('assignment');  //assignments elements are here! but doesn't this reference riot not firebase?
   //var assignmentTags = firebase.database().ref("assignment"); //no
 
-
   var db = firebase.firestore();
   //assignments = [];
   db.collection("assignments").get().then(function(querySnapshot) {
@@ -86,9 +117,14 @@ function draw() {
         //console.log(doc.data().title);
 
         tempTitle = doc.data().title;
+
         //console.log(tempTitle);
         let x = random(width);
-        let temp = new Assignment(tempTitle, x, 200, 200);
+        let red = hexToRgb(doc.data().color).r;
+        let blue = hexToRgb(doc.data().color).g;
+        let green = hexToRgb(doc.data().color).b;
+
+        let temp = new Assignment(tempTitle, x, 200, 200, red, blue, green);
 
         let already = false;
         for (check of assignments) {
@@ -103,7 +139,8 @@ function draw() {
     });
   });
 
-  console.log(assignments);
+  //console.log(assignments);
+
 
 
 
