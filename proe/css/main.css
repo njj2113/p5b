@@ -1,0 +1,17 @@
+h1 {
+  text-align: center;
+}
+
+html, body {
+  width: 100%;
+  font-family: helvetica;
+  font-size: 20px;
+  padding: 20px;
+  background-color: #AAAAFF;
+}
+
+#menu {
+  width: 50%;
+  border: 3px solid black;
+  background-color: #AAFFAA;
+}
