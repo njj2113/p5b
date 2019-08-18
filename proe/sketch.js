@@ -1,10 +1,10 @@
 let assignment;
-var assignments = [];
+//var assignments = [];
 
 function setup() {
   createCanvas(800,600);
-  assignments.push(new Assignment);
-  print(assignments.length);
+  assignment = new Assignment(200,200,200));
+  //print(assignments.length);
 }
 
 function draw() {
@@ -14,9 +14,10 @@ function draw() {
 }
 
 class Assignment {
-  constructor() {
-    this.x = 200;
-    this.y = 200;
+  constructor(x, y, z) {
+    this.x = x;
+    this.y = y;
+    this.z = z;
   }
 
   show() {
