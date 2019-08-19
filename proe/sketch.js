@@ -1,9 +1,9 @@
-let assignmentTags = [];
+//let assignmentTags = [];
 let assignments = [];
 
 //used color converter directly from: https://stackoverflow.com/questions/5623838/rgb-to-hex-and-hex-to-rgb
 function hexToRgb(hex) {
-  var result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
+  var result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex); //google regular expressions
   return result ? {
     r: parseInt(result[1], 16),
     g: parseInt(result[2], 16),
@@ -40,7 +40,6 @@ function mouseClicked() {
               console.log(j);
             }
           }
-
         });
       });
 
@@ -73,31 +72,31 @@ function draw() {
   //assignments = [];
   db.collection("assignments").get().then(function(querySnapshot) {
     querySnapshot.forEach(function(doc) {
-        //assignments.push(doc.data());
-        //console.log(doc.id)
-        //console.log(doc.data().course);
-        //console.log(doc.data().title);
+      //assignments.push(doc.data());
+      //console.log(doc.id)
+      //console.log(doc.data().course);
+      //console.log(doc.data().title);
 
-        tempTitle = doc.data().title;
+      tempTitle = doc.data().title;
 
-        //console.log(tempTitle);
-        let x = random(width);
-        let red = hexToRgb(doc.data().color).r;
-        let blue = hexToRgb(doc.data().color).g;
-        let green = hexToRgb(doc.data().color).b;
+      //console.log(tempTitle);
+      let x = random(width);
+      let red = hexToRgb(doc.data().color).r;
+      let blue = hexToRgb(doc.data().color).g;
+      let green = hexToRgb(doc.data().color).b;
 
-        let temp = new Assignment(tempTitle, x, 200, 200, red, blue, green);
+      let temp = new Assignment(tempTitle, x, 200, 200, red, blue, green);
 
-        let already = false;
-        for (check of assignments) {
-          if (tempTitle == check.name){
-            already = true;
-          }
+      let already = false;
+      for (check of assignments) {
+        if (tempTitle == check.name){
+          already = true;
         }
-        if (!already){
-          assignments.push(temp);
-        }
-        //console.log(assignments);
+      }
+      if (!already){
+        assignments.push(temp);
+      }
+      //console.log(assignments);
     });
   });
 
